@@ -22,6 +22,22 @@ void newPlayer(Player* p, int player_id){
     }
 }
 
+void sendToPlayer(Player* p, int* msg){
+    write(p->to_player[WRITE], msg, sizeof(int));
+}
+
+void readToPlayer(Player* p, int* msg){
+    read(p->to_player[READ], msg, sizeof(int));
+}
+
+void sendFromPlayer(Player* p, int* msg){
+    write(p->from_player[WRITE], msg, sizeof(int));
+}
+
+void readFromPlayer(Player* p, int* msg){
+    read(p->from_player[READ], msg, sizeof(int));
+}
+
 Board* sharedMemory(){
     int protection = PROT_READ|PROT_WRITE;
     int flags = MAP_SHARED|MAP_ANONYMOUS;

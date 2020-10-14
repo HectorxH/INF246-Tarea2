@@ -21,6 +21,14 @@ typedef struct{
 
 void newPlayer(Player* p, int player_id);
 
+void sendToPlayer(Player* p, int* msg);
+
+void readToPlayer(Player* p, int* msg);
+
+void sendFromPlayer(Player* p, int* msg);
+
+void readFromPlayer(Player* p, int* msg);
+
 Board* sharedMemory();
 
 
