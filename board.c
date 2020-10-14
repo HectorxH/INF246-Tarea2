@@ -26,8 +26,9 @@ void newBoard(Board* b){
 }
 
 void movePlayer(Board* b, int player_id, int roll){
-    b->pos[player_id] += roll;
+    b->pos[player_id] += roll*b->dir;
     if(b->pos[player_id] > 28) b->pos[player_id] = 28;
+    if(b->pos[player_id] < 0) b->pos[player_id] = 0;
 }
 
 void printRow(Board* b, int begin, int end, int inc, int align){
@@ -83,11 +84,18 @@ void printBoard(Board* b){
 }
 
 int checkWinner(Board*b){
-    if(b->pos[0] == 28) return 1;
-    else if(b->pos[1] == 28) return 2;
-    else if(b->pos[3] == 28) return 3;
-    else if(b->pos[1] == 28) return 4;
+    int goal = (b->dir>0)?28:0;
+
+    if(b->pos[0] == goal) return 1;
+    else if(b->pos[1] == goal) return 2;
+    else if(b->pos[2] == goal) return 3;
+    else if(b->pos[3] == goal) return 4;
     else return 0;
+}
+
+void reverseBoard(Board* b){
+    b->dir *= -1;
+    for(int i = 0; i<29; i++) b->board[i] *= -1;
 }
 
 

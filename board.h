@@ -4,10 +4,10 @@
 #include <stdio.h>
 #include <string.h>
 
-#define BONUS 1
+#define START -1
+#define FINISH 1
+#define BONUS -2
 #define SBONUS 2
-#define START 3
-#define FINISH 4
 
 typedef struct{
     int dir;
@@ -24,5 +24,7 @@ void printRow(Board* b, int begin, int end, int inc, int align);
 void printBoard(Board* b);
 
 int checkWinner(Board* b);
+
+void reverseBoard(Board* b);
 
 #endif
