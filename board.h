@@ -21,4 +21,6 @@ void printRow(Board* b, int begin, int end, int inc, int align);
 
 void printBoard(Board* b);
 
+int checkWinner(Board* b);
+
 #endif

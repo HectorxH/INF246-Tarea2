@@ -77,3 +77,12 @@ void printBoard(Board* b){
    printRow(b, 0, 9, 1, 0);
 }
 
+int checkWinner(Board*b){
+    if(b->players[0] == 28) return 1;
+    else if(b->players[1] == 28) return 2;
+    else if(b->players[3] == 28) return 3;
+    else if(b->players[1] == 28) return 4;
+    else return 0;
+}
+
+
