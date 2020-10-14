@@ -13,12 +13,13 @@
 #define WRITE 1
 
 typedef struct{
+    int player_id;
     pid_t pid;
     int to_player[2];
     int from_player[2];
 }Player;
 
-void newPlayer(Player* p);
+void newPlayer(Player* p, int player_id);
 
 Board* sharedMemory();
 

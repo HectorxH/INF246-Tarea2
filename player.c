@@ -1,10 +1,11 @@
 #include "player.h"
 
-void newPlayer(Player* p){
+void newPlayer(Player* p, int player_id){
     pipe(p->to_player);
     pipe(p->from_player);
 
     p->pid = fork();
+    p->player_id = player_id;
 
     if(p->pid == -1){
         printf("Error al realizar fork\n");

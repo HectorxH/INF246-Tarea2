@@ -22,7 +22,12 @@ void newBoard(Board* b){
     b->board[24] = SBONUS;
     b->board[26] = SBONUS;
 
-    for(int i=0; i<4; i++) b->players[i] = 0;
+    for(int i=0; i<4; i++) b->pos[i] = 0;
+}
+
+void movePlayer(Board* b, int player_id, int roll){
+    b->pos[player_id] += roll;
+    if(b->pos[player_id] > 28) b->pos[player_id] = 28;
 }
 
 void printRow(Board* b, int begin, int end, int inc, int align){
@@ -47,16 +52,16 @@ void printRow(Board* b, int begin, int end, int inc, int align){
     for(int i = begin; i*inc < end*inc; i+=inc){
         printf("|");
 
-        if( b->players[0] == i) printf("1");
+        if( b->pos[0] == i) printf("1");
         else printf(" ");
 
-        if( b->players[1] == i) printf("2");
+        if( b->pos[1] == i) printf("2");
         else printf(" ");
 
-        if( b->players[2] == i) printf("3");
+        if( b->pos[2] == i) printf("3");
         else printf(" ");
 
-        if( b->players[3] == i) printf("4");
+        if( b->pos[3] == i) printf("4");
         else printf(" ");
 
         printf("|");
@@ -78,10 +83,10 @@ void printBoard(Board* b){
 }
 
 int checkWinner(Board*b){
-    if(b->players[0] == 28) return 1;
-    else if(b->players[1] == 28) return 2;
-    else if(b->players[3] == 28) return 3;
-    else if(b->players[1] == 28) return 4;
+    if(b->pos[0] == 28) return 1;
+    else if(b->pos[1] == 28) return 2;
+    else if(b->pos[3] == 28) return 3;
+    else if(b->pos[1] == 28) return 4;
     else return 0;
 }
 
