@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include<time.h>
+#include <time.h>
 #include "board.h"
 #include "game.h"
 #include "player.h"
@@ -29,26 +29,31 @@ int main(){
         srand(getpid());
         while(1){
             readToPlayer(&p, &msg);
-            if(msg == KILL) return 0;
+            if(msg == KILL) {
+                killPlayer(&p);
+                return 0;
+            }
             else if(msg == ROLL){
                 int trash;
-                scanf("%d", &trash);
+                while(scanf("%d", &trash) < 1);
                 int roll = d6();
                 movePlayer(b, p.player_id, roll);
                 sendFromPlayer(&p, &msg);
             }
         }
-
     }
     else if(!player[1].pid || !player[2].pid || !player[3].pid){
         Player p = player[i];
         srand(getpid());
         while(1){
             readToPlayer(&p, &msg);
-            if(msg == KILL) return 0;
+            if(msg == KILL){
+                killPlayer(&p);
+                return 0;
+            }
             else if(msg == ROLL){
                 int trash;
-                scanf("%d", &trash);
+                while(scanf("%d", &trash) < 1);
                 int roll = d6();
                 movePlayer(b, p.player_id, roll);
                 sendFromPlayer(&p, &msg);
@@ -66,6 +71,7 @@ int main(){
 
             sendToPlayer(&player[curr_player], &msg);
             readFromPlayer(&player[curr_player], &msg);
+            system("clear");
             printBoard(b);
         }
         msg = KILL;
@@ -73,6 +79,7 @@ int main(){
         sendToPlayer(&player[1], &msg);
         sendToPlayer(&player[2], &msg);
         sendToPlayer(&player[3], &msg);
+        for(int i = 0; i < 4; i++) killPlayer(&player[i]);
 
         printf("El ganador es el jugador %d!\n", checkWinner(b));
 

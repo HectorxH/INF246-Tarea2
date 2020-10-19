@@ -38,6 +38,17 @@ void readFromPlayer(Player* p, int* msg){
     read(p->from_player[READ], msg, sizeof(int));
 }
 
+void killPlayer(Player* p){
+    if(p->pid == 0){
+        close(p->to_player[READ]);
+        close(p->from_player[WRITE]);
+    }
+    else{
+        close(p->to_player[WRITE]);
+        close(p->from_player[READ]);
+    }
+}
+
 Board* sharedMemory(){
     int protection = PROT_READ|PROT_WRITE;
     int flags = MAP_SHARED|MAP_ANONYMOUS;

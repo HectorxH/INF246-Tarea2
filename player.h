@@ -31,5 +31,7 @@ void readFromPlayer(Player* p, int* msg);
 
 Board* sharedMemory();
 
+void killPlayer(Player* p);
+
 
 #endif
