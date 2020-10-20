@@ -42,19 +42,19 @@ int SR(int player_id){
     seleccion = rand()%5+1;
     switch(seleccion){
         case 1:
-            printf("Efecto ocurrido: Woosh! El jugador retrocede una cuadricula.");
+            printf("Efecto ocurrido: Woosh! El jugador retrocede una cuadricula.\n");
             break;
         case 2:
-            printf("Efecto ocurrido: Woosh! Los demas jugadores retroceden una cuadricula.");
+            printf("Efecto ocurrido: Woosh! Los demas jugadores retroceden una cuadricula.\n");
             break;
         case 3:
-            printf("Efecto ocurrido: Yay! Puedes avanzar una cuadricula.");
+            printf("Efecto ocurrido: Yay! Puedes avanzar una cuadricula.\n");
             break;
         case 4:
-            printf("Efecto ocurrido: El siguiente jugador no puede avanzar.");
+            printf("Efecto ocurrido: El siguiente jugador no puede avanzar.\n");
             break;
         case 5:
-            printf("Efecto ocurrido: Cambio en el sentido de los turnos.");
+            printf("Efecto ocurrido: Cambio en el sentido de los turnos.\n");
             break;
     }
 
