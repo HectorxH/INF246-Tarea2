@@ -7,6 +7,7 @@ void newGame(Game* g){
     g->turn_dir = 1;
 
 
+
     printf("En que turno desea comenzar? (1, 2, 3 o 4)\n");
     printf("Turno: ");
     int player_turn;
@@ -22,8 +23,14 @@ void newGame(Game* g){
     printf("Los turnos seran:\n1- Jugador %d\n2- Jugador %d\n3- Jugador %d\n4- Jugador %d\n", g->turns[0]+1,g->turns[1]+1,g->turns[2]+1,g->turns[3]+1);
 }
 
+
+void skipNextTurn(Game* g){
+    g->pass = 1;
+}
+
 void reverseTurns(Game* g){
     g->turn_dir *= -1;
+
 }
 
 void printTurn(Game* g){

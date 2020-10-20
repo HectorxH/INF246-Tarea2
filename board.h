@@ -3,6 +3,8 @@
 
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
+
 
 #define START -1
 #define FINISH 1
@@ -19,9 +21,16 @@ void newBoard(Board* b);
 
 void movePlayer(Board* b, int player_id, int roll);
 
+
+int getPos(Board *b, int player_id);
+
 void printRow(Board* b, int begin, int end, int inc, int align);
 
+int SR(int player_id);
+
 void printBoard(Board* b);
+
+int SSR(int player_id);
 
 int checkWinner(Board* b);
 
