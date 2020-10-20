@@ -44,7 +44,7 @@ int main(){
                     int effect = SR(p.player_id);
                     readFromPlayer(&p, &msg);
                     if(effect){
-                        printf("El efecto elegido es: %d\n", SR(p.player_id));
+                        printf("El efecto elegido es: %d\n", effect);
                     }
                     else{
                         printf("Se ha eligido no activar el efecto!\n");
