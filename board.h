@@ -26,10 +26,11 @@ void printRow(Board* b, int begin, int end, int inc, int align);
 
 int SR(int player_id);
 
+int SSR(int player_id);
+
 void printBoard(Board* b);
 
 int checkWinner(Board* b);
-
 
 void reverseBoard(Board* b);
 
