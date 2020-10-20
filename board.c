@@ -25,6 +25,7 @@ void newBoard(Board* b){
     for(int i=0; i<4; i++) b->pos[i] = 0;
 }
 
+
 int getPos(Board *b, int player_id){
     return b->board[b->pos[player_id]];
 }
@@ -94,6 +95,7 @@ int SSR(int player_id){
     }
     return seleccion;
 }
+
 
 void movePlayer(Board* b, int player_id, int roll){
     b->pos[player_id] += roll*b->dir;

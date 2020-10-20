@@ -5,6 +5,7 @@
 #include "player.h"
 
 #define KILL -1
+
 #define END_TURN 0
 #define ROLL 1
 #define ONE_BACK 2
@@ -27,6 +28,7 @@ int main(){
     }
 
     int msg;
+
 
     if(!player[0].pid || !player[1].pid || !player[2].pid || !player[3].pid){
         Player p = player[i];

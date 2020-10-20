@@ -11,9 +11,11 @@ typedef struct{
     int turn_number;
     int turns[4];
     int curr_turn;
+    int turn_dir;
 }Game;
 
 void newGame(Game* g);
+
 
 void skipNextTurn(Game* g);
 
