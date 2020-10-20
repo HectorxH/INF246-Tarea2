@@ -49,7 +49,7 @@ int main(){
                 int roll = d6();
                 movePlayer(b, p.player_id, roll);
                 printBoard(b);
-                aux_pos = getPos(b, p.player_id);
+                aux_pos = getCell(b, p.player_id);
 
                 if(aux_pos == BONUS){
                     effect = SR(p.player_id);
@@ -71,7 +71,7 @@ int main(){
                                 sendFromPlayer(&p, &msg);
                                 break;
                             case 5:
-                                msg = REVERSE_BOARD;
+                                msg = REVERSE_TURNS;
                                 sendFromPlayer(&p, &msg);
                                 break;
                         }
@@ -84,6 +84,7 @@ int main(){
                     effect = SSR(p.player_id);
                     if(effect){
                         printf("El efecto elegido es: %d\n", effect);
+                        int swap_player, swap_pos, curr_pos;
                         switch(effect){
                             case 1:
                                 msg = TWO_BACK;
@@ -94,31 +95,31 @@ int main(){
                                 sendFromPlayer(&p, &msg);
                                 break;
                             case 3:
-                                int last_player = lastPlayer(b);
-                                int last_pos = getPos(b, last_player);
-                                int curr_pos = getPos(b, p.player_id);
-                                teleportPlayer(b, p.player_id, last_pos);
+                                swap_player = lastPlayer(b);
+                                swap_pos = getPos(b, swap_player);
+                                curr_pos = getPos(b, p.player_id);
+                                teleportPlayer(b, p.player_id, swap_pos);
                                 msg = SWAP;
                                 sendFromPlayer(&p, &msg);
-                                msg = last_player;
+                                msg = swap_player;
                                 sendFromPlayer(&p, &msg);
                                 msg = curr_pos;
                                 sendFromPlayer(&p, &msg);
                                 break;
                             case 4:
-                                int first_player = lastPlayer(b);
-                                int first_pos = getPos(b, last_player);
-                                int curr_pos = getPos(b, p.player_id);
-                                teleportPlayer(b, p.player_id, first_pos);
+                                swap_player = firstPlayer(b);
+                                swap_pos = getPos(b, swap_player);
+                                curr_pos = getPos(b, p.player_id);
+                                teleportPlayer(b, p.player_id, swap_pos);
                                 msg = SWAP;
                                 sendFromPlayer(&p, &msg);
-                                msg = last_player;
+                                msg = swap_player;
                                 sendFromPlayer(&p, &msg);
                                 msg = curr_pos;
                                 sendFromPlayer(&p, &msg);
                                 break;
                             case 5:
-                                msg = REVERSE_TURNS;
+                                msg = REVERSE_BOARD;
                                 sendFromPlayer(&p, &msg);
                                 break;
                         }

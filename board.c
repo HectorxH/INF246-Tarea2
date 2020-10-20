@@ -26,8 +26,12 @@ void newBoard(Board* b){
 }
 
 
-int getPos(Board *b, int player_id){
+int getCell(Board *b, int player_id){
     return b->board[b->pos[player_id]];
+}
+
+int getPos(Board *b, int player_id){
+    return b->pos[player_id];
 }
 
 int SR(int player_id){

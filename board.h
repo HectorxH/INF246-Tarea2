@@ -22,6 +22,7 @@ void newBoard(Board* b);
 
 void movePlayer(Board* b, int player_id, int roll);
 
+int getCell(Board *b, int player_id);
 
 int getPos(Board *b, int player_id);
 

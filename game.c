@@ -45,7 +45,7 @@ void printTurn(Game* g){
 }
 
 int nextTurn(Game* g){
-    g->curr_turn = (g->curr_turn+g->turn_dir)%4;
+    g->curr_turn = (g->curr_turn+g->turn_dir+4)%4;
     g->turn_number++;
     if(g->pass){
         g->pass = 0;
