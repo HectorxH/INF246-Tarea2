@@ -35,7 +35,7 @@ int main(){
             }
             else if(msg == ROLL){
                 int trash;
-                while(scanf("%d", &trash) < 1);
+                scanf("%d", &trash);
                 int roll = d6();
                 movePlayer(b, p.player_id, roll);
                 sendFromPlayer(&p, &msg);
@@ -53,7 +53,7 @@ int main(){
             }
             else if(msg == ROLL){
                 int trash;
-                while(scanf("%d", &trash) < 1);
+                scanf("%d", &trash);
                 int roll = d6();
                 movePlayer(b, p.player_id, roll);
                 sendFromPlayer(&p, &msg);
