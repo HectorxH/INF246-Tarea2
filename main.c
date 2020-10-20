@@ -38,15 +38,16 @@ int main(){
                 return 0;
             }
             else if(msg == ROLL){
-                int trash, aux_pos;
+                int trash, aux_pos, effect;
                 scanf("%d", &trash);
                 int roll = d6();
                 movePlayer(b, p.player_id, roll);
                 printBoard(b);
                 aux_pos = getPos(b, p.player_id);
-
+<<<<<<< HEAD
+=======
                 if(aux_pos == BONUS){
-                    int effect = SR(p.player_id);
+                    effect = SR(p.player_id);
                     if(effect){
                         printf("El efecto elegido es: %d\n", effect);
                         switch(effect){
@@ -69,6 +70,16 @@ int main(){
                                 sendFromPlayer(&p, &msg);
                                 break;
                         }
+                    }
+                    else{
+                        printf("Se ha eligido no activar el efecto!\n");
+                    }
+                }
+                else if(aux_pos == SBONUS){
+                    effect = SSR(p.player_id);
+>>>>>>> 222650a428e9d7c2a0642ca57d7b33bcafbfbc07
+                    if(effect){
+                        printf("El efecto elegido es: %d\n", effect);
                     }
                     else{
                         printf("Se ha eligido no activar el efecto!\n");
