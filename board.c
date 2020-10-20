@@ -33,7 +33,7 @@ int SR(int player_id){
     int seleccion;
     if(!player_id){
         int efecto;
-        printf("Quiere activar el efecto '\?'.\nIngrese 1 para activar el efecto, en otro caso ingrese un 0\n");
+        printf("Quiere activar el efecto '?'\nIngrese 1 para activar el efecto, en otro caso ingrese un 0\n");
         scanf("%d", &efecto);
         if(!efecto){
            return 0;
@@ -61,39 +61,7 @@ int SR(int player_id){
     return seleccion;
 }
 
-int SSR(int player_id){
-    int seleccion;
-    if(!player_id){
-        int efecto;
-        printf("Quiere activar el efecto '\?\?'.\nIngrese 1 para activar el efecto, en otro caso ingrese un 0\n");
-        scanf("%d", &efecto);
-        if(!efecto){
-           return 0;
-        }
-    }
-    seleccion = rand()%101;
-    if(seleccion < 10){
-        printf("Efecto ocurrido: Cambio en el sentido del tablero!\n");
-        return 5;
-    }
-    else if(seleccion < 30){
-        printf("Efecto ocurrido: Efecto ocurrido: El jugador cambia de posicion con el jugador que va en primer lugar!\n");
-        return 4;
-    }
-    else if(seleccion < 50){
-        printf("Efecto ocurrido: Woosh! Los demas jugadores avanzan hasta su proxima cuadrıcula blanca!\n");
-        return 2;
-    }
-    else if(seleccion < 70){
-        printf("Efecto ocurrido: Hm. El jugador cambia de posicion con el jugador que va en ultimo lugar!\n");
-        return 3;
-    }
-    else{
-        printf("Efecto ocurrido: Todos los jugadores retroceden 2 cuadriculas!\n");
-        return 1;
-    }
-    return seleccion;
-}
+
 
 void movePlayer(Board* b, int player_id, int roll){
     b->pos[player_id] += roll*b->dir;
