@@ -28,6 +28,8 @@ int SR(int player_id);
 
 void printBoard(Board* b);
 
+int SSR(int player_id);
+
 int checkWinner(Board* b);
 
 
