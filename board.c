@@ -29,6 +29,40 @@ int getPos(Board *b, int player_id){
     return b->board[b->pos[player_id]];
 }
 
+int SR(int player_id){
+    int seleccion;
+    if(!player_id){
+        int efecto;
+        printf("Quiere activar el efecto '?'\nIngrese 1 para activar el efecto, en otro caso ingrese un 0\n");
+        scanf("%d", &efecto);
+        if(!efecto){
+           return 0;
+        }
+    }
+    seleccion = rand()%5+1;
+    switch(seleccion){
+        case 1:
+            printf("Efecto ocurrido: Woosh! El jugador retrocede una cuadricula.");
+            break;
+        case 2:
+            printf("Efecto ocurrido: Woosh! Los demas jugadores retroceden una cuadricula.");
+            break;
+        case 3:
+            printf("Efecto ocurrido: Yay! Puedes avanzar una cuadricula.");
+            break;
+        case 4:
+            printf("Efecto ocurrido: El siguiente jugador no puede avanzar.");
+            break;
+        case 5:
+            printf("Efecto ocurrido: Cambio en el sentido de los turnos.");
+            break;
+    }
+
+    return seleccion;
+}
+
+
+
 void movePlayer(Board* b, int player_id, int roll){
     b->pos[player_id] += roll*b->dir;
     if(b->pos[player_id] > 28) b->pos[player_id] = 28;
