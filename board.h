@@ -10,6 +10,7 @@
 #define FINISH 1
 #define BONUS -2
 #define SBONUS 2
+#define NORMAL 0
 
 typedef struct{
     int dir;
@@ -31,6 +32,14 @@ int SR(int player_id);
 void printBoard(Board* b);
 
 int SSR(int player_id);
+
+int nextNormalPos(Board* b, int player_id); 
+
+void teleportPlayer(Board* b, int player_id, int newpos);
+
+int firstPlayer(Board* b);
+
+int lastPlayer(Board* b);
 
 int checkWinner(Board* b);
 

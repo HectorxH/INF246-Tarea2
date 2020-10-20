@@ -2,7 +2,7 @@
 
 void newBoard(Board* b){
     b->dir = 1;
-    for(int i = 0; i < 29; i++) b->board[i] = 0;
+    for(int i = 0; i < 29; i++) b->board[i] = NORMAL;
 
     b->board[0] = START;
     b->board[28] = FINISH;
@@ -82,7 +82,7 @@ int SSR(int player_id){
         return 4;
     }
     else if(seleccion < 50){
-        printf("Efecto ocurrido: Woosh! Los demas jugadores avanzan hasta su proxima cuadrıcula blanca!\n");
+        printf("Efecto ocurrido: Woosh! Los demas jugadores avanzan hasta su proxima cuadricula blanca!\n");
         return 2;
     }
     else if(seleccion < 70){
@@ -96,6 +96,86 @@ int SSR(int player_id){
     return seleccion;
 }
 
+int nextNormalPos(Board* b, int player_id){
+    // Direccion start->finish
+    int i;
+    if(b->dir == 1){
+        for(i = getPos(b, player_id); i < 28; i++){
+            if(b->board[i] == NORMAL){
+                return i;
+            }
+        }
+
+    }
+    // Direccion finish->start
+    else{
+        for(i = getPos(b, player_id); i > 0; i--){
+            if(b->board[i] == NORMAL){
+                return i;
+            }
+        }
+    }
+    // No hay mas casillas blancas, sin efecto.
+    return getPos(b, player_id);
+}
+
+void teleportPlayer(Board* b, int player_id, int newpos){
+    b->pos[player_id] = newpos;
+}
+
+int firstPlayer(Board* b){
+    int search, player;
+    // Direccion start->finish
+    // El "primero" va a tener la casilla con numero mas grande
+    if(b->dir == 1){
+        search = -1;
+        for(int i = 0; i < 4; i++){
+            if(b->pos[i] > search){
+                player = i;
+                search = b->pos[i];
+            }
+        }
+    }
+    // Direccion finish->start
+    // El "primero" va a tener la casilla con numero mas chico
+    else{
+        search = 29;
+        for(int i = 0; i < 4; i++){
+            if(b->pos[i] < search){
+                player = i;
+                search = b->pos[i];
+            }
+        }
+    }
+    return player;
+}
+
+int lastPlayer(Board* b){
+    int search, player;
+     // Direccion start->finish
+     // El "ultimo" va a tener la casilla con numero mas chica
+    if(b->dir == 1){
+        search = 29;
+        for(int i = 0; i < 4; i++){
+            if(b->pos[i] < search){
+                player = i;
+                search = b->pos[i];
+            }
+        }
+    }
+    // Direccion finish->start
+    // El "ultimo" va a tener la casilla con numero mas grande
+    else{
+        search = -1;
+        for(int i = 0; i < 4; i++){
+            if(b->pos[i] > search){
+                player = i;
+                search = b->pos[i];
+            }
+        }
+    }
+    return player;
+}
 
 void movePlayer(Board* b, int player_id, int roll){
     b->pos[player_id] += roll*b->dir;
