@@ -5,7 +5,11 @@
 #include "player.h"
 
 #define KILL -1
+#define END_TURN 0
 #define ROLL 1
+#define ONE_BACK 2
+#define SKIP_NEXT 3
+#define REVERSE_TURNS 4
 
 int d6(){
     return rand()%6+1;
@@ -40,17 +44,41 @@ int main(){
                 movePlayer(b, p.player_id, roll);
                 printBoard(b);
                 aux_pos = getPos(b, p.player_id);
-                if(aux_pos == -2){
+
+                if(aux_pos == BONUS){
                     int effect = SR(p.player_id);
-                    readFromPlayer(&p, &msg);
                     if(effect){
                         printf("El efecto elegido es: %d\n", effect);
+                        switch(effect){
+                            case 1:
+                                movePlayer(b, p.player_id, -1);
+                                break;
+                            case 2:
+                                msg = ONE_BACK;
+                                sendFromPlayer(&p, &msg);
+                                break;
+                            case 3:
+                                movePlayer(b, p.player_id, 1);
+                                break;
+                            case 4:
+                                msg = SKIP_NEXT;
+                                sendFromPlayer(&p, &msg);
+                                break;
+                            case 5:
+                                msg = REVERSE_TURNS;
+                                sendFromPlayer(&p, &msg);
+                                break;
+                        }
                     }
                     else{
                         printf("Se ha eligido no activar el efecto!\n");
                     }
                 }
+                msg = END_TURN;
                 sendFromPlayer(&p, &msg);
+            }
+            else if(msg == ONE_BACK){
+                movePlayer(b, p.player_id, -1);
             }
         }
     }
@@ -63,8 +91,20 @@ int main(){
             int curr_player = nextTurn(&g);
             sendToPlayer(&player[curr_player], &msg);
             readFromPlayer(&player[curr_player], &msg);
-
-            
+            while(msg != END_TURN){
+                if(msg == ONE_BACK){
+                    for(int i = 0; i < 4; i++){
+                        if(i != curr_player) sendToPlayer(&player[i], &msg);
+                    }
+                }
+                else if(msg == SKIP_NEXT){
+                    skipNextTurn(&g);
+                }
+                else if(msg == REVERSE_TURNS){
+                    reverseTurns(&g);
+                }
+                readFromPlayer(&player[curr_player], &msg);
+            }
         }
         msg = KILL;
         sendToPlayer(&player[0], &msg);

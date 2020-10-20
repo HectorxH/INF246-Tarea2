@@ -15,6 +15,8 @@ typedef struct{
 
 void newGame(Game* g);
 
+void skipNextTurn(Game* g);
+
 void reverseTurns(Game* g);
 
 int nextTurn(Game* g);

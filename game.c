@@ -21,6 +21,10 @@ void newGame(Game* g){
     printf("Los turnos seran:\n1- Jugador %d\n2- Jugador %d\n3- Jugador %d\n4- Jugador %d\n", g->turns[0]+1,g->turns[1]+1,g->turns[2]+1,g->turns[3]+1);
 }
 
+void skipNextTurn(Game* g){
+    g->pass = 1;
+}
+
 void reverseTurns(Game* g){
     int temp = g->turns[0];
     g->turns[0] = g->turns[3];
