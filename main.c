@@ -40,9 +40,8 @@ int main(){
                 movePlayer(b, p.player_id, roll);
                 printBoard(b);
                 aux_pos = getPos(b, p.player_id);
-                if(aux_pos == -2){
+                if(aux_pos == BONUS){
                     effect = SR(p.player_id);
-                    readFromPlayer(&p, &msg);
                     if(effect){
                         printf("El efecto elegido es: %d\n", effect);
                     }
@@ -50,9 +49,8 @@ int main(){
                         printf("Se ha eligido no activar el efecto!\n");
                     }
                 }
-                else if(aux_pos == 2){
+                else if(aux_pos == SBONUS){
                     effect = SSR(p.player_id);
-                    readFromPlayer(&p, &msg);
                     if(effect){
                         printf("El efecto elegido es: %d\n", effect);
                     }
