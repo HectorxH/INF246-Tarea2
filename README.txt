@@ -39,4 +39,4 @@ INDICACIONES:
 	☆ En caso de empate, se elige el jugador de menor id.
 +---------------------------------------------------------+
 
-Video de alta importancia: https://www.youtube.com/watch?v=nV3p7EXbrkc
+▼・ᴥ・▼ Video de alta importancia: https://www.youtube.com/watch?v=nV3p7EXbrkc ▼・ᴥ・▼
