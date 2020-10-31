@@ -33,7 +33,10 @@ INSTRUCCIONES DE USO
 INDICACIONES:
 	☆ Los demás jugadores siempre eligen activar el efecto ? o ??.
 	☆ Si el jugador principal no es el jugador actual, en caso de que algún
-	otro jugador active el efecto de RETROCEDER UN PASO y el jugador principal
+	otro jugador active el efecto de RETROCEDER UN PASO o RETROCEDER DOS PASOS 
+	y el jugador principal
 	caiga en la celda ? o ??, no se activa ningún efecto.
 	☆ En caso de empate, se elige el jugador de menor id.
 +---------------------------------------------------------+
+
+Video de alta importancia: https://www.youtube.com/watch?v=nV3p7EXbrkc
