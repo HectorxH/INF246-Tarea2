@@ -26,7 +26,9 @@ INSTRUCCIONES DE USO
 	☆ La flecha <-- o --> indica el orden de turnos.
 	☆ El orden de tablero es siempre de sta a fin.
 	☆ Al invertir el orden de tablero, se intercambian las posiciones de
-	sta y fin.	
+	sta y fin.
+	☆ No se imprimen las flechas en el tablero pues se asume la dirección
+	como implícita en base a lo mencionado antes.	
 +---------------------------------------------------------+
 INDICACIONES:
 	☆ Los demás jugadores siempre eligen activar el efecto ? o ??.
